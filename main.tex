@@ -1,0 +1,142 @@
+\documentclass[11pt, a4paper]{article}
+\usepackage[spanish]{babel}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{amsmath, amssymb}
+\usepackage{xcolor}
+
+
+\geometry{
+	left=2.5cm,
+	right=2.5cm,
+	top=3cm,
+	bottom=3cm
+}
+
+\pagestyle{plain}
+
+%opening
+\title{Obligatorio 2 \\ Cálculo en una variable}
+\author{Franco Cardozo y Juan Pablo Canedo}
+\date{}
+
+\begin{document}
+
+\maketitle
+\clearpage
+
+\section{Parte 1: Consumo energético}
+
+$$C(t) = 2 + 3 \sin^2 \left(\frac{\pi t}{12}\right)$$
+
+
+\subsection{Interpreta el significado físico de la función $C(t)$.}
+La constante 2 indica que el consumo mínimo de energía será de 2 kW, mientras que $(3 \sin^2 \left(\frac{\pi t}{12}\right))$ modela la variación de consumo en cada momento a lo largo de un día.
+
+\subsection{ Calcula el consumo total de energía entre las 0 y las 24 horas usando una integral definida.}
+
+\begin{align*}
+    & \int_{0}^{24} \left(2 + 3\sin^2\left(\frac{\pi t}{12}\right)\right) dt \\
+    &= \int_{0}^{24} 2 \, dt \quad + \quad \int_{0}^{24} 3\sin^2\left(\frac{\pi t}{12}\right) dt \\
+    &= \int_{0}^{24} 2 \, dt \quad + \quad 3\int_{0}^{24} \frac{1 - \cos\left(\frac{\pi t}{6}\right)}{2} dt \\
+    &= \int_{0}^{24} 2 \, dt \quad + \quad \frac{3}{2}\int_{0}^{24} 1 \, dt \quad - \quad \frac{3}{2}\int_{0}^{24} \cos\left(\frac{\pi t}{6}\right) dt \\
+    &= \left[2t\right]_{0}^{24} \quad + \quad \left[\frac{3}{2}t\right]_{0}^{24} \quad - \quad \frac{3}{2} \frac{6}{\pi} \int_{0}^{4\pi} \cos(u) \, du \quad
+    \boxed{
+        \begin{aligned}
+            u &= \frac{\pi t}{6} \\
+            du &= \frac{\pi}{6} dt
+        \end{aligned}
+    } \\
+    &= 48 \quad + \quad 36 \quad - \quad \frac{9}{\pi} \int_{0}^{4\pi} \cos(u) \, du \\
+    &= 84 \quad - \quad \frac{9}{\pi} \left[\sin(u)\right]_{0}^{4\pi} \\
+    &= 84 \quad - \quad \frac{9}{\pi} (\sin(4\pi) - \sin(0)) \\
+    &= 84 \quad - \quad \frac{9}{\pi} \cdot 0 \\
+    &= \boxed{84}
+\end{align*}
+
+El consumo total de energía en un período de 24 horas es de 84 kWh.
+
+\subsection{¿En qué momento(s) del día el consumo es máximo? Justifícalo analíticamente.
+}
+
+\begin{align*}
+    C(t) &= 2 + 3\sin^2\left(\frac{\pi t}{12}\right) \\
+    C(t) &= 2 + \frac{3}{2}\left[1 - \cos\left(\frac{\pi t}{6}\right)\right] \\
+    C(t) &= 2 + \frac{3}{2} - \frac{3}{2}\cos\left(\frac{\pi t}{6}\right) \\
+    C(t) &= \frac{7}{2} - \frac{3}{2}\cos\left(\frac{\pi t}{6}\right) \\
+\end{align*}
+\begin{align*}
+    C'(t) &= -\frac{3}{2} \cdot \left(-\sin\left(\frac{\pi t}{6}\right)\right) \cdot \frac{\pi}{6} \\
+    C'(t) &= \frac{\pi \sin\left(\frac{\pi t}{6}\right)}{4}
+\end{align*}
+
+La función $C'$ tendrá valor 0 cuando $\sin(\frac{\pi t}{6}) = 0$ o, lo que es lo mismo, $(\frac{\pi t}{6})$ sea múltiplo de $\pi$. O equivalentemente, cuando $t$ sea múltiplo de 6.
+
+Viendo el signo de la función $C$, se concluye que las horas donde el consumo eléctrico es máximo son a las 6 y a las 18 horas.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.9\linewidth]{image.png}
+\end{figure}
+
+\subsection{Calculá el consumo promedio de energía durante el día (de 0 a 24 h).}
+
+$C_{promedio} = \frac{\int_{0}^{24} C(t)dt}{24} = \frac{84}{12} = \frac{7}{2}$\\
+
+El consumo promedio fue de $\frac{7}{2}$ kW
+
+\subsection{Usando el teorema del valor medio para integrales, determiná si existe algún instante del día en que el consumo instantáneo sea exactamente igual al consumo promedio. En caso afirmativo, hallá dicho instante.}
+
+Sí, como la función $C(t)$ es constante en el intervalo $[0,24]$, entonces existirá un valor $c$ tal que la integral desde 0 hasta 24 de $C(t)$ sea igual a $f(c)(24 - 0)$
+
+\begin{align*}
+    C(t) &= C_{\text{promedio}} \\
+    2 + 3\sin^2\left(\frac{\pi t}{12}\right) &= \frac{7}{2} \\
+    3\sin^2\left(\frac{\pi t}{12}\right) &= \frac{3}{2} \\
+    \sin^2\left(\frac{\pi t}{12}\right) &= \frac{1}{2} \\
+    \frac{1 - \cos\left(\frac{\pi t}{6}\right)}{2} &= \frac{1}{2} \\
+    1 - \cos\left(\frac{\pi t}{6}\right) &= 1 \\
+    -\cos\left(\frac{\pi t}{6}\right) &= 0 \\
+    \cos\left(\frac{\pi t}{6}\right) &= 0 \\
+    \frac{\pi t}{6} &= \frac{\pi}{2} + k \pi \quad \implies \quad t = 3 + 6k \qquad k \in \mathbb{Z}
+\end{align*}
+
+Las horas a las que el consumo eléctrico es igual al promedio serán las 3, 9, 15 y 21.
+
+\section{Costo mensual con variación progresiva}
+\subsection{Calcula el precio diario correspondiente a los días 1 y 10, y determina la expresión de la progresión aritmética para ese tramo.}
+
+En el día 1, el precio diario tiene un 10\% de descuento sobre los \$4,2/kWh, por lo que el precio para el día 1 será de \$3,78/kWh. \\
+
+En el día 10, el precio diario será el normal, es decir \$4,2/kWh. \\
+
+la progresión aritmética $a_n$ modela el precio por kWh para cada día $n$ entre los días 1 y 10
+
+\begin{align*}
+a_n &= a_1 + (n-1) \cdot d \\
+a_{10} &= a_1 + 9 \cdot d\\
+\frac{a_{10}-a_1}{9} &= d\\
+\frac{4,2-3,78}{9} &= d \\
+\boxed{0,0467} &= d
+\end{align*}
+
+{\centering{\boxed{a_n = 3,78 + (n-1) \cdot 0,0467}} \\}
+
+\subsection{Calcula lo mismo para los días desde el 21 al 30.}
+{\color{red}TO-DO}
+
+\subsection{Usando fórmulas de progresiones aritméticas, calculá el costo mensual total para los 30 días.}
+{\color{red}TO-DO}\\
+
+{\color{red} NO SE BIEN QUE ESTAN PIDIENDO EN ESTA PARTE 2, SI EL COSTO POR KWH, SI EL COSTO TOTOAL A PAGAR POR TODA LA ENERGIA CONSUMIDA EN CADA DIA, SI EL COSTO PROMEDIO, NO ESTA CLARO. TO-DO}
+
+\section{Mejora de eficiencia}
+
+\subsection{Calcula el nuevo consumo energético diario.}
+
+$84 \cdot 0,80 = 67,2$
+
+El nuevo consumo eléctrico diario es de 67,2 kWh
+
+\subsection{Determina en cuántos días la inversión se amortiza considerando el ahorro energético diario.}
+\end{document}
