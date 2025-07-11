@@ -17,7 +17,7 @@
 
 %opening
 \title{Obligatorio 2 \\ Cálculo en una variable}
-\author{Franco Cardozo y Juan Pablo Canedo}
+\author{Juan Pablo Canedo y Franco Cardozo}
 \date{}
 
 \begin{document}
@@ -72,7 +72,7 @@ El consumo total de energía en un período de 24 horas es de 84 kWh.
 
 La función $C'$ tendrá valor 0 cuando $\sin(\frac{\pi t}{6}) = 0$ o, lo que es lo mismo, $(\frac{\pi t}{6})$ sea múltiplo de $\pi$. O equivalentemente, cuando $t$ sea múltiplo de 6.
 
-Viendo el signo de la función $C$, se concluye que las horas donde el consumo eléctrico es máximo son a las 6 y a las 18 horas.
+Viendo el signo de la función $C'$, se concluye que las horas donde el consumo eléctrico es máximo son a las 6 y a las 18 horas.
 
 \begin{figure}[h]
 	\centering
@@ -81,13 +81,13 @@ Viendo el signo de la función $C$, se concluye que las horas donde el consumo e
 
 \subsection{Calculá el consumo promedio de energía durante el día (de 0 a 24 h).}
 
-$C_{promedio} = \frac{\int_{0}^{24} C(t)dt}{24} = \frac{84}{12} = \frac{7}{2}$\\
+$C_{promedio} = \frac{\int_{0}^{24} C(t)dt}{24} = \frac{84}{24} = \frac{7}{2}$\\
 
 El consumo promedio fue de $\frac{7}{2}$ kW
 
 \subsection{Usando el teorema del valor medio para integrales, determiná si existe algún instante del día en que el consumo instantáneo sea exactamente igual al consumo promedio. En caso afirmativo, hallá dicho instante.}
 
-Sí, como la función $C(t)$ es constante en el intervalo $[0,24]$, entonces existirá un valor $c$ tal que la integral desde 0 hasta 24 de $C(t)$ sea igual a $f(c)(24 - 0)$
+Sí, como la función $C(t)$ es continua en el intervalo $[0,24]$, entonces existirá un valor $c$ tal que la integral desde 0 hasta 24 de $C(t)$ sea igual a $f(c)(24 - 0)$
 
 \begin{align*}
     C(t) &= C_{\text{promedio}} \\
@@ -152,7 +152,7 @@ Costo para los días 11 al 20 (precio constante de $\$4,2/kWh$):
 
 $P_2 = 4,2 \cdot 10 \cdot 84 = 3528 $\\
 
-Costo para los días 21 al 30 (precio constante de $\$4,2/kWh$):
+Costo para los días 21 al 30:
 
 $P_3 = (\frac{4,263 + 4,83}{2} \cdot 10) \cdot 84  = 45,465 \cdot 84 = 3819,06$ \\
 
@@ -194,4 +194,30 @@ Como el límite cuando $n$ tiende a $+\infty$ de $A_n$ es $+\infty$, la sucesió
 
 \section{Parte 4: Pérdida acumulada por ineficiencia}
 
+\subsection{}
+$F_n = (\frac{5}{n})^2$
+
+\[ \sum_{n=1}^{\infty}F_{n} = \sum_{n=1}^{\infty}\left(\frac{5}{n}\right)^{2} = 25 \sum_{n=1}^{\infty}\frac{1}{n^{2}} \]
+
+Según los criterios de convergencia para las series de tipo armónica generalizada, la serie converge porque $p=2$ y $2 > 1$
+
+\subsection{ Calculá la pérdida total de energía acumulada en los primeros 30 días. ¿Cómo se compara con el consumo diario total?}
+
+Para calcular la fuga acumulada de energía en los primeros 30 días hacemos la sumatoria desde n=1 hasta n=30
+
+\[ S_{30} = \sum_{n=1}^{30}\left(\frac{5}{n}\right)^{2} = 25 \sum_{n=1}^{30}\frac{1}{n^{2}} \approx 25 \times 1,61226 \approx 40,31 \text{ kWh} \] \\
+
+La fuga total de energía es de aproximadamente $40kWh$ que es aproximadamentet la mitad del consumo diario de energía.
+
+\subsection{Si cada kWh cuesta 4,2 pesos, estimá el costo económico de esa pérdida.}
+
+$Costo = 40,31 \cdot 4,2 = 169,30$ \\
+
+La pérdida económica es de $\$169,302$
+
+\subsection{Compará ese valor con el ahorro mensual generado por los paneles solares (ver Parte 3). ¿Cuál de los dos tiene mayor impacto económico?}
+
+Como el ahorro diario de los paneles solares era de $\$71, 3244$, el ahorro mensual de los paneles será de $\$71,3244 \cdot 30 = \$2139,732$ \\
+
+O sea que el ahorro económico de los paneles tiene un impacto economico mucho mayor que la fuga de energía.
 \end{document}
