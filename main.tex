@@ -123,12 +123,43 @@ a_{10} &= a_1 + 9 \cdot d\\
 {\centering{\boxed{a_n = 3,78 + (n-1) \cdot 0,0467}} \\}
 
 \subsection{Calcula lo mismo para los días desde el 21 al 30.}
-{\color{red}TO-DO}
+
+En el día 30, el precio diario será 15\% más caro que los \$4,2/kWh, por lo que el precio para el día 30 será de $4,2+(0,15\cdot4,2)=\$4,83/kWh$ \\
+
+Entonces la diferencia total va a ser de $4,83 - 4,2 = 0,63$ que se reparte entre los 10 días.\\
+
+$d = \frac{0,63}{10} = 0,063$ \\
+
+Entonces el precio en el día 21 será de $\$4,2 + \$0,063 = \$4,263$ \\
+
+Con un procedimiento análogo al de la parte anterior se llega a que la proogresión $b_n$ para los días 21 a 30 es la siguiente ($b_1$ equivale al día 21) \\
+
+$b_n = 4,263+(n-1) \cdot 0,063$ 
 
 \subsection{Usando fórmulas de progresiones aritméticas, calculá el costo mensual total para los 30 días.}
-{\color{red}TO-DO}\\
 
-{\color{red} NO SE BIEN QUE ESTAN PIDIENDO EN ESTA PARTE 2, SI EL COSTO POR KWH, SI EL COSTO TOTOAL A PAGAR POR TODA LA ENERGIA CONSUMIDA EN CADA DIA, SI EL COSTO PROMEDIO, NO ESTA CLARO. TO-DO}
+Para calcular el costo total de los 30 días hay que sumar los costos totales de los 3 grupos de 10 días. Como son progresiones aritméticas, la suma de los primeros n términos se calcula: \\
+
+$S_n = \frac{(a_1 + a_n)}{2} \cdot n$ \\
+
+Luego a  esta suma de los precios la multiplicamos por el consumo total de un día (84kW) \\
+
+Costo para los días 1 al 10:
+
+$P_1 = (\frac{3,78 + 4,2}{2} \cdot 10) \cdot 84  = 39,9 \cdot 84 = 3351,6$ \\
+
+Costo para los días 11 al 20 (precio constante de $\$4,2/kWh$):
+
+$P_2 = 4,2 \cdot 10 \cdot 84 = 3528 $\\
+
+Costo para los días 21 al 30 (precio constante de $\$4,2/kWh$):
+
+$P_3 = (\frac{4,263 + 4,83}{2} \cdot 10) \cdot 84  = 45,465 \cdot 84 = 3819,06$ \\
+
+
+$P_{total} = P_1 + P_2 + P_3 = 10698,66$ \\
+
+El consumo total es de $\$10698,66$
 
 \section{Mejora de eficiencia}
 
@@ -136,7 +167,31 @@ a_{10} &= a_1 + 9 \cdot d\\
 
 $84 \cdot 0,80 = 67,2$
 
-El nuevo consumo eléctrico diario es de 67,2 kWh
+El nuevo consumo eléctrico diario es de $67,2 kWh$
 
 \subsection{Determina en cuántos días la inversión se amortiza considerando el ahorro energético diario.}
+
+El ahorro energético diario es de $84kWh-\$67,2kWh = 16,8kWh$ \\
+
+El precio medio del kWh en el período de 30 días va a ser:
+$\frac{P_{total}}{84\cdot 30} = \frac{\$10698,66}{2520} = \$4,2455$ \\
+
+Por lo tanto, el ahorro monetario diario va a ser de: \\
+
+$16,8 \cdot 4,2455 = \$71,3244$ \\
+
+Como la inversión fue de $\$150.000$ \\
+
+$Dias = \frac{150.000}{71,3244} = 2103$ \\
+
+Por lo tanto, la inversión queda amortizada en 2103 días.
+
+\subsection{Representa con una sucesión el ahorro acumulado después de n días, y determina si converge o no.}
+
+$A_n = 71,3244 \cdot n$
+
+Como el límite cuando $n$ tiende a $+\infty$ de $A_n$ es $+\infty$, la sucesión no converge.
+
+\section{Parte 4: Pérdida acumulada por ineficiencia}
+
 \end{document}
